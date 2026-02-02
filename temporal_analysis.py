@@ -8,7 +8,7 @@ df = df[["date", "btc_return", "sp500_return", "gold_return"]]
 df = df.replace(0.000000, pd.NA)
 df = df.dropna(subset=["sp500_return"])        
 df = df.dropna(subset=["gold_return"])  
-
+l
 
 
 print(df.to_string())
