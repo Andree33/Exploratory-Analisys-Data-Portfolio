@@ -1,9 +1,9 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
-data = 'BTC-market-analysis_2021-25.csv'
-df = pd.read_csv(data)
+import matplotlib.pyplot as plt
 
+data = './Data_Analysis/BTC-market-analysis_2021-25.csv'
+df = pd.read_csv(data)
 df = df[["date", "btc_return", "sp500_return", "gold_return"]]
 
 df = df.replace(0.000000, pd.NA)
@@ -39,4 +39,12 @@ for i in range(size):
         df.iloc[i,6] = line["Gold Balance"] * (1 + line["gold_return"])
         df.iloc[i,7] = df.iloc[i-1,7]
 
-print(df.to_string())
+plt.plot(df["date"], df["BTC Balance"])
+plt.plot(df["date"], df["SP500 Balance"])
+plt.plot(df["date"], df["Gold Balance"])
+plt.plot(df["date"], df["Invested Balance"], linewidth=2)
+
+
+plt.show()
+
+
